@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1,
+  maximum-scale=5"
+    />
+
+    <link rel="icon" href="devchallenges.png" />
+
+    <link
+      rel="shortcut icon"
+      type="image/x-icon"
+      href="https://devchallenges.io/"
+    />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+
+    <title>Devchallenges</title>
+
+    <style>
+      *, *::before, *::after {
+        font-family: "Poppins", sans-serif;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        box-sizing: border-box;
+        border: none;
+        outline: none;
+      }
+
+      :root{
+        --gray-bg: #F2F2F2;
+        --border-radius: 10px;
+        --primary: #F2994A
+      }
+
+      body, html {
+        width: 100%;
+        height: 100%;
+        min-width: 350px;
+        display: grid;
+        place-items: center;
+      }
+
+      .container {
+        width: 100%;
+        height: 100%;
+        min-width: 350px;
+        max-width: 900px;
+        display: grid;
+        padding: 1rem;
+        gap: 5rem;
+      }
+      
+      .checkout-info-cont > form {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+      }
+
+      .shipping-box {
+        display: flex;
+        flex-direction: column;
+        background-color: var(--gray-bg);
+        gap: 1rem;
+        border-radius: var(--border-radius);
+        /* padding: 1rem; */
+      }
+
+      .shipping-box-item {
+        display: flex;
+        gap: 1rem;
+        padding: 1.5rem;
+      }
+      
+      .shipping-box-item > img {
+        width: 200px;
+        height: auto;
+        object-fit: contain;
+        border-radius: var(--border-radius);
+      }
+
+      .box-important-content {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .box-important-content .text {
+        flex: 0.8;
+      }
+
+      .text .item-prices {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+      }
+
+      .text > h4 {
+        font-size: 1rem;
+        color: gray;
+        width: max-content;
+      }
+
+      .text {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .text .item-prices h6:nth-child(1) {
+        color: var(--primary);
+        font-size: 1rem;
+      }
+
+      .text .item-prices h6:nth-child(2) {
+        text-decoration: line-through;
+        color: gray
+      }
+
+      .box-important-content .btns-box {
+        flex: 0.2;
+        display: flex;
+        padding: 1rem;
+        border: 2px solid gray;
+        border-radius: var(--border-radius);
+      }
+
+      .btns-box .remove, .btns-box .add {
+        border-radius: var(--border-radius);
+      }
+
+      .btns-box .remove {
+        flex: 0.33
+      }
+      .btns-box > span {
+        flex: 0.33;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .btns-box .add {
+        flex: 0.33
+      }
+
+
+      /* laptop screen */
+      @media screen and (min-width: 750px)
+      {
+        .container {
+          grid-template-columns: repeat(2, 1fr);
+          grid-template-areas: "first second";
+        }
+
+        .user-info-cont {
+          grid-area: second;
+        }
+
+        .checkout-info-cont {
+          grid-area: first;
+        }
+
+      }
+
+      .contact-information, .shipping-address {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+
+      .contact-information > h3 {
+        padding: 1rem;
+      }
+
+      .shipping-address > h3 {
+        padding: 1rem;
+      }
+
+      .input-container {
+        display: flex;
+        border: 1px solid gray;
+        border-radius: var(--border-radius);
+        padding: .5rem;
+        gap: 1rem;
+        color: grey;
+      }
+
+      .input-container > input {
+        width: 100%;
+      }
+
+      .input-button-cont {
+        display: flex;
+        justify-content: flex-end;
+      }
+
+      .input-button-cont > button {
+        background-color: var(--primary);
+        padding: 1rem 3rem;
+        border-radius: var(--border-radius);
+        color: #fff;
+        font-weight: bold;
+        cursor: pointer;
+      }
+
+      .input-box {
+        display: flex;
+        flex-direction: column;
+        gap: .5rem
+      }
+
+      .input-box > span {
+        font-size: 13px;
+        margin-left: .5rem;
+        color: gray;
+      }
+
+      .double-input {
+        display: flex;
+        gap: .5rem;
+      }
+
+      .double-input select {
+        background-color: inherit;
+      }
+
+      .payment-data {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1rem;
+      }
+
+      .payment-data .payment-data-box {
+        display: flex;
+        justify-content: space-between;
+        border-top: 1px solid gray;
+        padding-top: .5rem;
+        color: rgb(60, 59, 59);
+      }
+
+      .payment-data-box h6:nth-child(1)
+      {
+        font-size: 1.2rem;
+      }
+
+      .payment-data-box h6:last-child {
+        font-size: 1rem;
+      }
+
+      footer {
+        width: 100%;
+        display: grid;
+        place-items: center;
+        height: 80px;
+        padding: 4rem;
+      }
+
+    </style>
+  </head>
+  <body>
+    <h1 style="padding: 2rem; color: grey">Checkout</h1>
+    <div class="container">
+      <div class="user-info-cont">
+        <div class="shipping-box">
+          <div>
+            <div class="shipping-box-item">
+              <img src="./photo1.png" alt="">
+              <div class="box-important-content">
+                <div class="text">
+                  <h4 class="h4">Vintage Backbag</h4>
+                  <div class="item-prices">
+                    <h6>$54,99</h6>
+                    <h6>$94,99</h6>
+                  </div>
+                </div>
+                <div class="btns-box">
+                  <button class="remove">
+                    <span class="material-icons">
+                      remove
+                      </span>
+                  </button>
+                  <span>1</span>
+                  <button class="add">
+                    <span class="material-icons">
+                      add
+                    </span>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="shipping-box-item">
+              <img src="./photo2.png" alt="">
+              <div class="box-important-content">
+                <div class="text">
+                  <h4 class="h4">Vintage Backbag</h4>
+                  <div class="item-prices">
+                    <h6>$54,99</h6>
+                    <h6>$94,99</h6>
+                  </div>
+                </div>
+                <div class="btns-box">
+                  <button class="remove">
+                    <span class="material-icons">
+                      remove
+                      </span>
+                  </button>
+                  <span>1</span>
+                  <button class="add">
+                    <span class="material-icons">
+                      add
+                    </span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="payment-data">
+            <div class="payment-data-box">
+              <h6>Shipping</h6>
+              <h6>$19</h6>
+            </div>
+            <div class="payment-data-box">
+              <h6>Total</h6>
+              <h6>$148.98</h6>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="checkout-info-cont">
+        <form>
+          <div class="contact-information">
+            <h3>Contact information</h3>
+            <div class="input-box">
+              <span>E-mail</span>
+              <div class="input-container">
+                <span class="material-icons">
+                  email
+                </span>
+                <input type="text" name=""  id="full-name" placeholder="Enter your email..." >
+              </div>
+            </div>
+            <div class="input-box">
+              <span>Phone number</span>
+              <div class="input-container">
+                <span class="material-icons">
+                  call
+                </span>
+                <input type="text" name=""  id="full-name" placeholder="Enter your phone number..." >
+              </div>
+            </div>
+          </div>
+          <div class="shipping-address">
+            <h3>shipping-address</h3>
+
+            <div class="input-box">
+              <span>Full name</span>
+              <div class="input-container">
+                <span class="material-icons">
+                  account_circle
+                </span>
+                <input type="text" name=""  id="full-name" placeholder="Full name" >
+              </div>
+            </div>
+            <div class="input-box">
+              <span>Address</span>
+              <div class="input-container">
+                <span class="material-icons">
+                  home
+                </span>
+                <input type="text" name=""  id="full-name" placeholder="Your address...">
+              </div>
+            </div>
+            <div class="input-box">
+              <span>City</span>
+              <div class="input-container">
+                <span class="material-icons">
+                  apartment
+                </span>
+                <input type="text" name=""  id="full-name" placeholder="Your city">
+              </div>
+            </div>
+
+            <div class="double-input">
+              <div class="input-box">
+                <span>Country</span>
+                <div class="input-container">
+                  <span class="material-icons">
+                    public
+                    </span>
+                  <select>
+                    <option value="Venezuela" >Venezuela</option>
+                    <option value="USA" >United States</option>
+                    <option value="UK" >United Kingdom</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="input-box">
+                <span>Postal Code</span>
+                <div class="input-container">
+                  <span class="material-icons">
+                    markunread_mailbox
+                  </span>
+                  <input type="text" placeholder="Postal Code" >
+                </div>
+              </div>
+            
+             
+            </div>
+          </div>
+          <label>
+            <input type="checkbox" id="save-this">
+            Save this information for next time
+          </label>
+          <div class="input-button-cont">
+            <button type="submit">Continue</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <footer>
+      <h4>Created by Jorge Duran</h4>
+    </footer>
+  </body>
+</html>
